@@ -118,9 +118,9 @@ export const EventHighlights: React.FC<EventHighlightsProps> = ({ onOpenMap }) =
           </span>
         </div>
 
-        {/* Schedule & Venue Grid with Regular Font Style on Dates and Timings */}
+        {/* Schedule & Venue Grid with Consistent Festival Icon Styles */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-5 relative z-10">
-          {/* Confirmed Date Card: 17 OCT '26 (Regular Style) */}
+          {/* Confirmed Date Card: 17 OCT '26 */}
           <div className="p-3.5 sm:p-4 rounded-xl bg-black/30 border border-[#F59E0B]/25 hover:border-[#F59E0B]/50 transition-all flex items-start gap-3.5 group">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#F59E0B]/25 to-[#F59E0B]/10 border border-[#F59E0B]/40 text-[#FCD34D] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-sm">
               <Calendar className="w-5 h-5 text-[#FCD34D]" />
@@ -138,7 +138,7 @@ export const EventHighlights: React.FC<EventHighlightsProps> = ({ onOpenMap }) =
             </div>
           </div>
 
-          {/* Confirmed Timing Card: 6:00 PM – 10:00 PM (Regular Style) */}
+          {/* Confirmed Timing Card: 6:00 PM – 10:00 PM */}
           <div className="p-3.5 sm:p-4 rounded-xl bg-black/30 border border-[#F59E0B]/25 hover:border-[#F59E0B]/50 transition-all flex items-start gap-3.5 group">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#F59E0B]/25 to-[#F59E0B]/10 border border-[#F59E0B]/40 text-[#FCD34D] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-sm">
               <Clock className="w-5 h-5 text-[#FCD34D]" />
@@ -156,10 +156,10 @@ export const EventHighlights: React.FC<EventHighlightsProps> = ({ onOpenMap }) =
             </div>
           </div>
 
-          {/* Full-Width Venue Card: SECTOR 82 A, GURUGRAM */}
-          <div className="sm:col-span-2 p-3.5 sm:p-4 rounded-xl bg-black/35 border border-[#F59E0B]/25 hover:border-[#F59E0B]/45 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
+          {/* Full-Width Venue Card: SECTOR 82 A, GURUGRAM (Upgraded Icon Style) */}
+          <div className="sm:col-span-2 p-3.5 sm:p-4 rounded-xl bg-black/35 border border-[#F59E0B]/25 hover:border-[#F59E0B]/45 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 group">
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-lg bg-[#163A63]/80 border border-[#F59E0B]/30 text-[#FCD34D] flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#F59E0B]/25 to-[#F59E0B]/10 border border-[#F59E0B]/40 text-[#FCD34D] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-sm">
                 <MapPin className="w-5 h-5 text-[#FCD34D]" />
               </div>
               <div>
@@ -186,7 +186,7 @@ export const EventHighlights: React.FC<EventHighlightsProps> = ({ onOpenMap }) =
           </div>
         </div>
 
-        {/* Key Highlights Section */}
+        {/* Key Highlights Section (Upgraded Icon Style) */}
         <div className="mt-6 pt-5 border-t border-[#F59E0B]/20 relative z-10">
           <div className="flex items-center justify-between mb-3.5">
             <div className="flex items-center gap-2">
@@ -203,9 +203,9 @@ export const EventHighlights: React.FC<EventHighlightsProps> = ({ onOpenMap }) =
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {/* 1. DANDIYA */}
-            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-[#F59E0B]/20 hover:border-[#F59E0B]/40 transition-all flex items-start gap-3">
-              <div className="w-9 h-9 rounded-lg bg-[#163A63] border border-[#F59E0B]/30 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                <DandiyaIcon className="w-4 h-4 text-[#FDE68A]" />
+            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-[#F59E0B]/20 hover:border-[#F59E0B]/40 transition-all flex items-start gap-3 group">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#F59E0B]/25 to-[#F59E0B]/10 border border-[#F59E0B]/40 text-[#FCD34D] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-sm mt-0.5">
+                <DandiyaIcon className="w-5 h-5 text-[#FCD34D]" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
@@ -220,9 +220,9 @@ export const EventHighlights: React.FC<EventHighlightsProps> = ({ onOpenMap }) =
             </div>
 
             {/* 2. FLEA MARKET */}
-            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-[#F59E0B]/20 hover:border-[#F59E0B]/40 transition-all flex items-start gap-3">
-              <div className="w-9 h-9 rounded-lg bg-[#163A63] border border-[#F59E0B]/30 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                <ShoppingBag className="w-4 h-4 text-[#FDE68A]" />
+            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-[#F59E0B]/20 hover:border-[#F59E0B]/40 transition-all flex items-start gap-3 group">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#F59E0B]/25 to-[#F59E0B]/10 border border-[#F59E0B]/40 text-[#FCD34D] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-sm mt-0.5">
+                <ShoppingBag className="w-5 h-5 text-[#FCD34D]" />
               </div>
               <div>
                 <p className="font-serif font-bold text-xs sm:text-sm text-[#FDE68A] uppercase tracking-wider">
@@ -235,9 +235,9 @@ export const EventHighlights: React.FC<EventHighlightsProps> = ({ onOpenMap }) =
             </div>
 
             {/* 3. FOOD */}
-            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-[#F59E0B]/20 hover:border-[#F59E0B]/40 transition-all flex items-start gap-3">
-              <div className="w-9 h-9 rounded-lg bg-[#163A63] border border-[#F59E0B]/30 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                <Utensils className="w-4 h-4 text-[#FDE68A]" />
+            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-[#F59E0B]/20 hover:border-[#F59E0B]/40 transition-all flex items-start gap-3 group">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#F59E0B]/25 to-[#F59E0B]/10 border border-[#F59E0B]/40 text-[#FCD34D] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-sm mt-0.5">
+                <Utensils className="w-5 h-5 text-[#FCD34D]" />
               </div>
               <div>
                 <p className="font-serif font-bold text-xs sm:text-sm text-[#FDE68A] uppercase tracking-wider">
@@ -250,9 +250,9 @@ export const EventHighlights: React.FC<EventHighlightsProps> = ({ onOpenMap }) =
             </div>
 
             {/* 4. FUN & MORE... */}
-            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-[#F59E0B]/20 hover:border-[#F59E0B]/40 transition-all flex items-start gap-3">
-              <div className="w-9 h-9 rounded-lg bg-[#163A63] border border-[#F59E0B]/30 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                <PartyPopper className="w-4 h-4 text-[#FDE68A]" />
+            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-[#F59E0B]/20 hover:border-[#F59E0B]/40 transition-all flex items-start gap-3 group">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#F59E0B]/25 to-[#F59E0B]/10 border border-[#F59E0B]/40 text-[#FCD34D] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-sm mt-0.5">
+                <PartyPopper className="w-5 h-5 text-[#FCD34D]" />
               </div>
               <div>
                 <p className="font-serif font-bold text-xs sm:text-sm text-[#FDE68A] uppercase tracking-wider">
