@@ -11,12 +11,11 @@ import { EventHighlights } from './components/EventHighlights';
 import { VenueModal } from './components/VenueModal';
 import { Footer } from './components/Footer';
 import { RegistrationData } from './types';
-import { MapPin, Ticket } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 
 export default function App() {
   const [registeredData, setRegisteredData] = useState<RegistrationData | null>(null);
   const [isMapOpen, setIsMapOpen] = useState(false);
-  const [showStickyBtn, setShowStickyBtn] = useState(false);
 
   const formSectionRef = useRef<HTMLDivElement>(null);
 
@@ -31,25 +30,6 @@ export default function App() {
       // ignore
     }
   }, []);
-
-  // Show floating register button on mobile when scrolled past form
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!formSectionRef.current || registeredData) {
-        setShowStickyBtn(false);
-        return;
-      }
-      const rect = formSectionRef.current.getBoundingClientRect();
-      if (rect.bottom < 60) {
-        setShowStickyBtn(true);
-      } else {
-        setShowStickyBtn(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [registeredData]);
 
   const handleRegistrationSuccess = (data: RegistrationData) => {
     setRegisteredData(data);
@@ -76,16 +56,6 @@ export default function App() {
     }
   };
 
-  const scrollToForm = () => {
-    if (formSectionRef.current) {
-      formSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      const firstInput = formSectionRef.current.querySelector('input');
-      if (firstInput) {
-        firstInput.focus();
-      }
-    }
-  };
-
   return (
     <div className="min-h-screen relative flex flex-col justify-between overflow-x-hidden text-[#FFF6E5] festive-pattern selection:bg-[#F59E0B] selection:text-[#380812]">
       {/* Decorative festive top glow */}
@@ -98,12 +68,9 @@ export default function App() {
 
         {/* Content Layout */}
         <main className="w-full my-auto py-3 sm:py-6">
-          {/* Mobile Layout (Stacked) */}
+          {/* Mobile Layout (Stacked: Form 1st, Festival Details 2nd) */}
           <div className="flex flex-col gap-6 lg:hidden">
-            {/* Visual poster card first on mobile */}
-            {!registeredData && <EventHighlights onOpenMap={() => setIsMapOpen(true)} />}
-
-            {/* Registration Card (or Ticket) */}
+            {/* Registration Card (or Ticket) 1st on mobile */}
             <div
               ref={formSectionRef}
               id="registration-mobile"
@@ -120,8 +87,8 @@ export default function App() {
               )}
             </div>
 
-            {/* If registered, show highlights below ticket */}
-            {registeredData && <EventHighlights onOpenMap={() => setIsMapOpen(true)} />}
+            {/* Festival Details & Poster 2nd on mobile */}
+            <EventHighlights onOpenMap={() => setIsMapOpen(true)} />
           </div>
 
           {/* Desktop Layout (Split 2-Column: Form on Left, Poster/Details on Right) */}
@@ -170,22 +137,6 @@ export default function App() {
 
       {/* Google Maps Modal */}
       <VenueModal isOpen={isMapOpen} onClose={() => setIsMapOpen(false)} />
-
-      {/* Mobile Floating Sticky Registration Button */}
-      {!registeredData && showStickyBtn && (
-        <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 p-3 bg-[#2A060E]/95 backdrop-blur-md border-t border-[#F59E0B]/40 shadow-[0_-8px_24px_rgba(0,0,0,0.4)] animate-fade-in">
-          <div className="max-w-md mx-auto">
-            <button
-              type="button"
-              onClick={scrollToForm}
-              className="w-full min-h-[46px] py-2.5 px-6 rounded-xl font-serif text-sm font-extrabold tracking-wider text-[#FFFDF7] bg-gradient-to-r from-[#163A63] to-[#1E4578] border border-[#F59E0B]/50 flex items-center justify-center gap-2 cursor-pointer shadow-md uppercase active:scale-[0.98]"
-            >
-              <Ticket className="w-4 h-4 text-[#FCD34D]" />
-              <span>RESERVE ENTRY PASS</span>
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -465,12 +465,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess })
                 <span>CONFIRMING REGISTRATION...</span>
               </>
             ) : (
-              <>
-                <span>REGISTER NOW</span>
-                <span className="text-[#FCD34D] font-sans text-sm ml-1 font-bold">
-                  (FREE)
-                </span>
-              </>
+              <span>REGISTER NOW</span>
             )}
           </button>
         </div>
