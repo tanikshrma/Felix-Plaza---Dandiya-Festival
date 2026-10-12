@@ -6,13 +6,14 @@ import {
   CalendarDays,
   ShoppingBag,
   Utensils,
-  Award,
-  Maximize2,
-  X,
+  PartyPopper,
   Navigation,
   Car,
   Users2,
   ShieldCheck,
+  Maximize2,
+  X,
+  Image as ImageIcon,
 } from 'lucide-react';
 import { DandiyaIcon } from './icons/FestiveIcons';
 
@@ -24,34 +25,82 @@ export const EventHighlights: React.FC<EventHighlightsProps> = ({ onOpenMap }) =
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  // The official single Nav Utsav festival image
-  const posterSrc = '/nav-utsav-intro-grid.png';
-  const posterAlt = 'Felix Plaza Nav Utsav Dandiya Festival';
+  // The official single Nav Utsav festival banner image
+  const bannerSrc = '/Nav Utsav Intro Grid (1).png';
+  const bannerAlt = 'Felix Plaza Nav Utsav Dandiya Festival Banner';
 
   return (
     <div className="w-full flex flex-col gap-6">
-      {/* Visual Poster Frame - Clean Single Image */}
+      {/* Visual Festival Banner Frame - Clean and Responsive on Mobile & Desktop */}
       <div className="relative rounded-2xl bg-[#2A060E]/90 border border-[#F59E0B]/40 p-2.5 sm:p-3 shadow-[0_12px_40px_rgba(0,0,0,0.35)] overflow-hidden">
+        {/* Banner Header Strip */}
+        <div className="flex items-center justify-between pb-2 mb-2 px-1 border-b border-[#F59E0B]/20">
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F59E0B] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F59E0B]"></span>
+            </span>
+            <div className="flex items-center gap-1.5">
+              <ImageIcon className="w-3.5 h-3.5 text-[#FCD34D]" />
+              <span className="font-serif text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase text-[#FDE68A]">
+                FESTIVAL BANNER &amp; PREVIEW
+              </span>
+            </div>
+          </div>
+
+          <span className="text-[10px] font-semibold text-[#FDE68A]/75 uppercase tracking-wider">
+            Click to expand
+          </span>
+        </div>
+
+        {/* Banner Image Container with Hover Zoom & Click Lightbox */}
         <div
           className="relative w-full rounded-xl overflow-hidden bg-[#1D040A] flex items-center justify-center cursor-pointer group shadow-inner border border-[#F59E0B]/20"
           onClick={() => setLightboxOpen(true)}
         >
           <img
-            src={posterSrc}
-            alt={posterAlt}
+            src={bannerSrc}
+            alt={bannerAlt}
             referrerPolicy="no-referrer"
             onLoad={() => setImageLoaded(true)}
-            className={`w-full h-auto max-h-[380px] sm:max-h-[420px] object-contain transition-all duration-300 group-hover:scale-[1.01] ${
+            className={`w-full h-auto max-h-[480px] sm:max-h-[540px] object-contain transition-all duration-300 group-hover:scale-[1.015] ${
               imageLoaded ? 'opacity-100' : 'opacity-90'
             }`}
           />
 
-          {/* Subtle click hint icon on hover */}
-          <div className="absolute top-2.5 right-2.5 p-1.5 rounded-lg bg-black/60 text-[#FDE68A] opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm border border-[#F59E0B]/40">
-            <Maximize2 className="w-4 h-4" />
+          {/* Expand icon overlay on hover */}
+          <div className="absolute top-3 right-3 p-2 rounded-xl bg-black/75 text-[#FDE68A] opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm border border-[#F59E0B]/40 shadow-lg">
+            <Maximize2 className="w-4 h-4 text-[#FCD34D]" />
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal for Banner */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setLightboxOpen(false)}
+        >
+          <div
+            className="relative max-w-5xl w-full max-h-[92vh] flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setLightboxOpen(false)}
+              className="absolute -top-12 right-0 p-2.5 rounded-full bg-[#2A060E] text-[#FFFDF7] hover:bg-[#F59E0B] hover:text-[#28050C] transition-all border border-[#F59E0B]/50 cursor-pointer shadow-xl"
+              aria-label="Close Lightbox"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <img
+              src={bannerSrc}
+              alt={bannerAlt}
+              className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-[#F59E0B]/40"
+            />
+          </div>
+        </div>
+      )}
 
       {/* Premium Event Details & Highlights Card */}
       <div className="relative rounded-2xl bg-gradient-to-b from-[#2E0710]/95 via-[#25050D]/95 to-[#1B0309]/95 border border-[#F59E0B]/40 p-5 sm:p-7 shadow-[0_16px_50px_rgba(0,0,0,0.4)] text-[#FFFDF7] overflow-hidden">
@@ -79,45 +128,45 @@ export const EventHighlights: React.FC<EventHighlightsProps> = ({ onOpenMap }) =
           </span>
         </div>
 
-        {/* Schedule & Venue Grid */}
+        {/* Schedule & Venue Grid with Regular Font Style on Dates and Timings */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-5 relative z-10">
-          {/* Date Card */}
-          <div className="p-3.5 sm:p-4 rounded-xl bg-black/30 border border-[#F59E0B]/20 hover:border-[#F59E0B]/40 transition-all flex items-start gap-3.5 group">
-            <div className="w-10 h-10 rounded-lg bg-[#F59E0B]/15 border border-[#F59E0B]/30 text-[#F59E0B] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+          {/* Confirmed Date Card: 17 OCT '26 (Regular Style) */}
+          <div className="p-3.5 sm:p-4 rounded-xl bg-black/30 border border-[#F59E0B]/25 hover:border-[#F59E0B]/50 transition-all flex items-start gap-3.5 group">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#F59E0B]/25 to-[#F59E0B]/10 border border-[#F59E0B]/40 text-[#FCD34D] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-sm">
               <Calendar className="w-5 h-5 text-[#FCD34D]" />
             </div>
             <div>
               <span className="text-[10px] font-bold tracking-wider text-[#FCD34D]/80 uppercase block">
-                DATES & SCHEDULE
+                FESTIVAL DATE
               </span>
-              <p className="font-semibold text-sm sm:text-[15px] text-[#FFFDF7] mt-0.5">
-                Festive Navratri Season
+              <p className="font-sans font-normal text-sm sm:text-base text-[#FFFDF7] mt-0.5">
+                17 OCT &apos;26
               </p>
-              <p className="text-xs text-[#FDE68A]/75 mt-0.5">
-                Dates to be announced soon
+              <p className="text-xs text-[#FDE68A]/80 mt-0.5 font-normal">
+                Saturday • Grand Nav Utsav
               </p>
             </div>
           </div>
 
-          {/* Timing Card */}
-          <div className="p-3.5 sm:p-4 rounded-xl bg-black/30 border border-[#F59E0B]/20 hover:border-[#F59E0B]/40 transition-all flex items-start gap-3.5 group">
-            <div className="w-10 h-10 rounded-lg bg-[#F59E0B]/15 border border-[#F59E0B]/30 text-[#F59E0B] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+          {/* Confirmed Timing Card: 6:00 PM – 10:00 PM (Regular Style) */}
+          <div className="p-3.5 sm:p-4 rounded-xl bg-black/30 border border-[#F59E0B]/25 hover:border-[#F59E0B]/50 transition-all flex items-start gap-3.5 group">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#F59E0B]/25 to-[#F59E0B]/10 border border-[#F59E0B]/40 text-[#FCD34D] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-sm">
               <Clock className="w-5 h-5 text-[#FCD34D]" />
             </div>
             <div>
               <span className="text-[10px] font-bold tracking-wider text-[#FCD34D]/80 uppercase block">
-                EVENING TIMINGS
+                FESTIVAL TIMINGS
               </span>
-              <p className="font-semibold text-sm sm:text-[15px] text-[#FFFDF7] mt-0.5">
-                7:00 PM Onwards
+              <p className="font-sans font-normal text-sm sm:text-base text-[#FFFDF7] mt-0.5">
+                6:00 PM – 10:00 PM
               </p>
-              <p className="text-xs text-[#FDE68A]/75 mt-0.5">
-                Entry starts 6:30 PM
+              <p className="text-xs text-[#FDE68A]/80 mt-0.5 font-normal">
+                Gates Open at 5:30 PM (6-10 PM)
               </p>
             </div>
           </div>
 
-          {/* Full-Width Venue Card */}
+          {/* Full-Width Venue Card: SECTOR 82 A, GURUGRAM */}
           <div className="sm:col-span-2 p-3.5 sm:p-4 rounded-xl bg-black/35 border border-[#F59E0B]/25 hover:border-[#F59E0B]/45 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
             <div className="flex items-start gap-3.5">
               <div className="w-10 h-10 rounded-lg bg-[#163A63]/80 border border-[#F59E0B]/30 text-[#FCD34D] flex items-center justify-center shrink-0">
@@ -127,11 +176,11 @@ export const EventHighlights: React.FC<EventHighlightsProps> = ({ onOpenMap }) =
                 <span className="text-[10px] font-bold tracking-wider text-[#FCD34D]/80 uppercase block">
                   VENUE LOCATION
                 </span>
-                <p className="font-semibold text-sm sm:text-base text-[#FFFDF7] mt-0.5">
-                  Felix Plaza, Sector 82A
+                <p className="font-sans font-normal text-sm sm:text-base text-[#FFFDF7] mt-0.5">
+                  Felix Plaza, Sector 82 A, Gurugram
                 </p>
                 <p className="text-xs text-[#FDE68A]/75 mt-0.5">
-                  Rampura, Gurugram (NH-48) • Near Hyatt Regency & AapnoGhar
+                  Rampura, Gurugram (NH-48) • Near Hyatt Regency &amp; AapnoGhar
                 </p>
               </div>
             </div>
@@ -147,78 +196,80 @@ export const EventHighlights: React.FC<EventHighlightsProps> = ({ onOpenMap }) =
           </div>
         </div>
 
-        {/* Festival Highlights Section */}
+        {/* Key Highlights Section */}
         <div className="mt-6 pt-5 border-t border-[#F59E0B]/20 relative z-10">
           <div className="flex items-center justify-between mb-3.5">
             <div className="flex items-center gap-2">
               <span className="h-px w-4 bg-[#F59E0B]" />
               <h4 className="font-serif text-sm sm:text-base font-bold tracking-widest uppercase text-[#FCD34D]">
-                FESTIVAL HIGHLIGHTS
+                KEY HIGHLIGHTS
               </h4>
               <span className="h-px w-4 bg-[#F59E0B]" />
             </div>
             <span className="text-[10px] font-semibold text-[#FFFDF7]/60 uppercase tracking-wider hidden sm:inline">
-              Included with entry
+              Official Offerings
             </span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {/* Highlight 1: Dandiya & Garba Raas */}
-            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-white/5 hover:border-[#F59E0B]/30 transition-all flex items-start gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#F59E0B]/15 border border-[#F59E0B]/30 flex items-center justify-center shrink-0 mt-0.5">
-                <DandiyaIcon className="w-4 h-4 text-[#F59E0B]" />
+            {/* 1. DANDIYA */}
+            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-[#F59E0B]/20 hover:border-[#F59E0B]/40 transition-all flex items-start gap-3">
+              <div className="w-9 h-9 rounded-lg bg-[#163A63] border border-[#F59E0B]/30 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                <DandiyaIcon className="w-4 h-4 text-[#FDE68A]" />
               </div>
               <div>
-                <p className="font-bold text-xs sm:text-sm text-[#FFFDF7]">
-                  Dandiya &amp; Garba Raas
-                </p>
-                <p className="text-[11px] text-[#FDE68A]/70 mt-0.5 leading-snug">
-                  Traditional circular Garba, live beats and celebratory Dandiya dancing for everyone.
+                <div className="flex items-center gap-2">
+                  <p className="font-serif font-bold text-xs sm:text-sm text-[#FDE68A] uppercase tracking-wider">
+                    DANDIYA
+                  </p>
+                </div>
+                <p className="text-[11px] text-[#FFFDF7]/80 mt-0.5 leading-snug">
+                  Traditional Garba &amp; circular Dandiya Raas with live dhol beats and folk energy.
                 </p>
               </div>
             </div>
 
-            {/* Highlight 2: Festive Flea Market */}
-            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-white/5 hover:border-[#F59E0B]/30 transition-all flex items-start gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#F59E0B]/15 border border-[#F59E0B]/30 flex items-center justify-center shrink-0 mt-0.5">
-                <ShoppingBag className="w-4 h-4 text-[#F59E0B]" />
+            {/* 2. FLEA MARKET */}
+            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-[#F59E0B]/20 hover:border-[#F59E0B]/40 transition-all flex items-start gap-3">
+              <div className="w-9 h-9 rounded-lg bg-[#163A63] border border-[#F59E0B]/30 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                <ShoppingBag className="w-4 h-4 text-[#FDE68A]" />
               </div>
               <div>
-                <p className="font-bold text-xs sm:text-sm text-[#FFFDF7]">
-                  Festive Flea Market
+                <p className="font-serif font-bold text-xs sm:text-sm text-[#FDE68A] uppercase tracking-wider">
+                  FLEA MARKET
                 </p>
-                <p className="text-[11px] text-[#FDE68A]/70 mt-0.5 leading-snug">
-                  Curated shopping stalls with ethnic apparel, festive jewelry and accessories.
+                <p className="text-[11px] text-[#FFFDF7]/80 mt-0.5 leading-snug">
+                  Curated festive shopping with ethnic apparel, traditional jewellery &amp; handicrafts.
                 </p>
               </div>
             </div>
 
-            {/* Highlight 3: Delicious Food Stalls */}
-            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-white/5 hover:border-[#F59E0B]/30 transition-all flex items-start gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#F59E0B]/15 border border-[#F59E0B]/30 flex items-center justify-center shrink-0 mt-0.5">
-                <Utensils className="w-4 h-4 text-[#F59E0B]" />
+            {/* 3. FOOD */}
+            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-[#F59E0B]/20 hover:border-[#F59E0B]/40 transition-all flex items-start gap-3">
+              <div className="w-9 h-9 rounded-lg bg-[#163A63] border border-[#F59E0B]/30 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                <Utensils className="w-4 h-4 text-[#FDE68A]" />
               </div>
               <div>
-                <p className="font-bold text-xs sm:text-sm text-[#FFFDF7]">
-                  Delicious Food Stalls
+                <p className="font-serif font-bold text-xs sm:text-sm text-[#FDE68A] uppercase tracking-wider">
+                  FOOD
                 </p>
-                <p className="text-[11px] text-[#FDE68A]/70 mt-0.5 leading-snug">
-                  Authentic festive delicacies, Indian street food, live chaat counters and drinks.
+                <p className="text-[11px] text-[#FFFDF7]/80 mt-0.5 leading-snug">
+                  Mouthwatering festive delicacies, street food counters, chaat &amp; refreshing drinks.
                 </p>
               </div>
             </div>
 
-            {/* Highlight 4: Prizes for Best Attire */}
-            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-white/5 hover:border-[#F59E0B]/30 transition-all flex items-start gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#F59E0B]/15 border border-[#F59E0B]/30 flex items-center justify-center shrink-0 mt-0.5">
-                <Award className="w-4 h-4 text-[#F59E0B]" />
+            {/* 4. FUN & MORE... */}
+            <div className="p-3 sm:p-3.5 rounded-xl bg-black/25 border border-[#F59E0B]/20 hover:border-[#F59E0B]/40 transition-all flex items-start gap-3">
+              <div className="w-9 h-9 rounded-lg bg-[#163A63] border border-[#F59E0B]/30 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                <PartyPopper className="w-4 h-4 text-[#FDE68A]" />
               </div>
               <div>
-                <p className="font-bold text-xs sm:text-sm text-[#FFFDF7]">
-                  Prizes for Best Attire
+                <p className="font-serif font-bold text-xs sm:text-sm text-[#FDE68A] uppercase tracking-wider">
+                  FUN &amp; MORE...
                 </p>
-                <p className="text-[11px] text-[#FDE68A]/70 mt-0.5 leading-snug">
-                  Special recognition and daily gift hampers for best traditional festive dressed dancers.
+                <p className="text-[11px] text-[#FFFDF7]/80 mt-0.5 leading-snug">
+                  Exciting festive games, photo booths, best attire prizes &amp; joyful divine celebrations.
                 </p>
               </div>
             </div>
@@ -237,40 +288,10 @@ export const EventHighlights: React.FC<EventHighlightsProps> = ({ onOpenMap }) =
           </div>
           <div className="flex items-center gap-1.5">
             <ShieldCheck className="w-3.5 h-3.5 text-[#F59E0B]" />
-            <span>Dedicated Security &amp; First Aid</span>
+            <span>Dedicated Security &amp; Helpdesk</span>
           </div>
         </div>
       </div>
-
-      {/* Lightbox Modal for High-Resolution Poster View */}
-      {lightboxOpen && (
-        <div
-          className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
-          onClick={() => setLightboxOpen(false)}
-        >
-          <div
-            className="relative max-w-5xl max-h-[92vh] flex flex-col items-center justify-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={() => setLightboxOpen(false)}
-              className="absolute -top-10 right-0 sm:right-0 p-2 text-white/80 hover:text-white transition-colors cursor-pointer"
-              aria-label="Close Lightbox"
-            >
-              <X className="w-6 h-6" />
-            </button>
-            <img
-              src={posterSrc}
-              alt={posterAlt}
-              className="max-h-[85vh] max-w-full rounded-xl object-contain shadow-2xl border border-[#F59E0B]/50"
-            />
-            <p className="text-center text-xs text-[#FDE68A] mt-2 font-semibold">
-              {posterAlt} • Sector 82A, Gurugram
-            </p>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

@@ -165,10 +165,10 @@ export const PassTicket: React.FC<PassTicketProps> = ({
               <Calendar className="w-4 h-4 text-[#380812] mt-0.5 shrink-0" />
               <div>
                 <span className="font-bold text-[#380812] text-sm block">
-                  Nav Utsav Dandiya Festival • 7:00 PM Onwards
+                  Saturday, 17 Oct &apos;26 • 6:00 PM – 10:00 PM
                 </span>
                 <span className="text-[#4A1521] text-[11px] block mt-0.5">
-                  Doors open at 6:30 PM • Live Dandiya, Flea Market & Food
+                  Gates open at 5:30 PM • Dandiya, Flea Market, Food, Fun &amp; More
                 </span>
               </div>
             </div>

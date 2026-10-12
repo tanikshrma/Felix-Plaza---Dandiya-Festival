@@ -230,7 +230,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSuccess })
           RESERVE YOUR PLACE
         </h2>
         <p className="text-xs sm:text-[13px] text-[#4A1521] mt-1 max-w-md mx-auto leading-relaxed">
-          Join us for an unforgettable festive celebration of Dandiya Raas, flea market, delicious food & music at Felix Plaza.
+          Join us on <strong className="text-[#380812]">Saturday, 17 Oct &apos;26 (6-10 PM)</strong> for Dandiya, Flea Market, Food, Fun &amp; More at Felix Plaza, Sector 82 A, Gurugram.
         </p>
       </div>
 

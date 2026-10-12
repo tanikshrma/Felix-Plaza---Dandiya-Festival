@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin } from 'lucide-react';
+import { MapPin, Calendar, Clock } from 'lucide-react';
 
 interface HeaderProps {
   onOpenMap: () => void;
@@ -35,7 +35,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMap }) => {
         </div>
 
         {/* PRESENTS Line */}
-        <div className="flex items-center gap-3 mt-2 sm:mt-2.5 mb-1.5 w-full justify-center">
+        <div className="flex items-center gap-3 mt-2 sm:mt-2.5 mb-1 w-full justify-center">
           <span className="h-px w-10 sm:w-16 bg-gradient-to-r from-transparent to-[#F59E0B]" />
           <span className="text-[10px] sm:text-[11px] font-semibold tracking-[0.35em] uppercase text-[#FCD34D]">
             PRESENTS
@@ -43,8 +43,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMap }) => {
           <span className="h-px w-10 sm:w-16 bg-gradient-to-l from-transparent to-[#F59E0B]" />
         </div>
 
-        {/* Official Nav Utsav Logo (Replacing plain text) */}
-        <div className="my-1 flex flex-col items-center justify-center">
+        {/* Official Nav Utsav Logo & Hero Lockup */}
+        <div className="my-1.5 flex flex-col items-center justify-center">
           {!utsavLogoError ? (
             <img
               src="/nav-utsav-logo.png"
@@ -52,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMap }) => {
               referrerPolicy="no-referrer"
               onLoad={() => setUtsavLogoLoaded(true)}
               onError={() => setUtsavLogoError(true)}
-              className={`w-60 sm:w-72 md:w-84 lg:w-96 max-w-full h-auto object-contain drop-shadow-[0_6px_24px_rgba(0,0,0,0.55)] transition-opacity duration-300 ${
+              className={`w-64 sm:w-80 md:w-96 max-w-full h-auto object-contain drop-shadow-[0_8px_30px_rgba(0,0,0,0.6)] transition-opacity duration-300 ${
                 utsavLogoLoaded ? 'opacity-100' : 'opacity-90'
               }`}
             />
@@ -62,21 +62,39 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMap }) => {
             </h1>
           )}
 
-          <p className="text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase text-[#FDE68A] mt-1">
+          {/* GURUGRAM'S BIGGEST DANDIYA FESTIVAL */}
+          <h2 className="font-serif text-xs sm:text-sm md:text-base font-extrabold tracking-[0.26em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#FDE68A] via-[#FFFDF7] to-[#FDE68A] drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)] mt-2">
             GURUGRAM&apos;S BIGGEST DANDIYA FESTIVAL
-          </p>
+          </h2>
         </div>
 
-        {/* Location pill */}
-        <div className="mt-2.5">
-          <button
-            type="button"
-            onClick={onOpenMap}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#163A63]/85 hover:bg-[#1E4578] active:scale-95 text-[#FFFDF7] text-[11px] sm:text-xs font-semibold tracking-wider uppercase border border-[#F59E0B]/50 hover:border-[#F59E0B] transition-all cursor-pointer shadow-sm"
-          >
-            <MapPin className="w-3.5 h-3.5 text-[#F59E0B] shrink-0" />
-            <span>SECTOR 82A, GURUGRAM</span>
-          </button>
+        {/* Date, Timing & Venue Lockup */}
+        <div className="mt-3.5 flex flex-col items-center justify-center gap-2.5">
+          {/* 17 OCT '26 • 6-10PM - Glowing Marquee Badge */}
+          <div className="relative group">
+            <div className="absolute -inset-1 rounded-full bg-[#F59E0B]/30 blur-sm pointer-events-none" />
+            <div className="relative inline-flex items-center gap-2.5 px-5 sm:px-6 py-2 rounded-full bg-gradient-to-r from-[#D97706] via-[#F59E0B] to-[#D97706] text-[#28050C] font-sans font-normal text-xs sm:text-sm md:text-[15px] tracking-normal uppercase shadow-[0_4px_20px_rgba(245,158,11,0.5)] border-2 border-[#FEF3C7] ring-1 ring-[#78350F]/20 select-none">
+              <Calendar className="w-4 h-4 text-[#28050C] shrink-0" />
+              <span>17 OCT &apos;26</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#28050C]/60" />
+              <Clock className="w-4 h-4 text-[#28050C] shrink-0" />
+              <span>6-10PM</span>
+            </div>
+          </div>
+
+          {/* SECTOR 82 A, GURUGRAM */}
+          <div className="flex items-center gap-2.5 mt-0.5">
+            <span className="h-px w-6 sm:w-10 bg-[#F59E0B]/40" />
+            <button
+              type="button"
+              onClick={onOpenMap}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#163A63]/80 hover:bg-[#1E4578] active:scale-95 text-[#FFFDF7] text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase border border-[#F59E0B]/40 hover:border-[#F59E0B] transition-all cursor-pointer shadow-sm group"
+            >
+              <MapPin className="w-3.5 h-3.5 text-[#F59E0B] shrink-0 group-hover:scale-110 transition-transform" />
+              <span>SECTOR 82 A, GURUGRAM</span>
+            </button>
+            <span className="h-px w-6 sm:w-10 bg-[#F59E0B]/40" />
+          </div>
         </div>
       </div>
     </header>
