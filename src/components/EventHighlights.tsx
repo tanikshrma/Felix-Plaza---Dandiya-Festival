@@ -35,22 +35,12 @@ export const EventHighlights: React.FC<EventHighlightsProps> = ({ onOpenMap }) =
       <div className="relative rounded-2xl bg-[#2A060E]/90 border border-[#F59E0B]/40 p-2.5 sm:p-3 shadow-[0_12px_40px_rgba(0,0,0,0.35)] overflow-hidden">
         {/* Banner Header Strip */}
         <div className="flex items-center justify-between pb-2 mb-2 px-1 border-b border-[#F59E0B]/20">
-          <div className="flex items-center gap-2">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F59E0B] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F59E0B]"></span>
+          <div className="flex items-center gap-1.5">
+            <ImageIcon className="w-3.5 h-3.5 text-[#FCD34D]" />
+            <span className="font-serif text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase text-[#FDE68A]">
+              FESTIVAL BANNER &amp; PREVIEW
             </span>
-            <div className="flex items-center gap-1.5">
-              <ImageIcon className="w-3.5 h-3.5 text-[#FCD34D]" />
-              <span className="font-serif text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase text-[#FDE68A]">
-                FESTIVAL BANNER &amp; PREVIEW
-              </span>
-            </div>
           </div>
-
-          <span className="text-[10px] font-semibold text-[#FDE68A]/75 uppercase tracking-wider">
-            Click to expand
-          </span>
         </div>
 
         {/* Banner Image Container with Hover Zoom & Click Lightbox */}
@@ -161,7 +151,7 @@ export const EventHighlights: React.FC<EventHighlightsProps> = ({ onOpenMap }) =
                 6:00 PM – 10:00 PM
               </p>
               <p className="text-xs text-[#FDE68A]/80 mt-0.5 font-normal">
-                Gates Open at 5:30 PM (6-10 PM)
+                Gates Open at 6:00 PM – 10:00 PM
               </p>
             </div>
           </div>

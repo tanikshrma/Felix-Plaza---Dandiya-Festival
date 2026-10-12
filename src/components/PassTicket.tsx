@@ -168,7 +168,7 @@ export const PassTicket: React.FC<PassTicketProps> = ({
                   Saturday, 17 Oct &apos;26 • 6:00 PM – 10:00 PM
                 </span>
                 <span className="text-[#4A1521] text-[11px] block mt-0.5">
-                  Gates open at 5:30 PM • Dandiya, Flea Market, Food, Fun &amp; More
+                  Gates open at 6:00 PM – 10:00 PM • Dandiya, Flea Market, Food, Fun &amp; More
                 </span>
               </div>
             </div>
