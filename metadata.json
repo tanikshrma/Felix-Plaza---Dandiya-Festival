@@ -1,0 +1,6 @@
+{
+  "name": "Felix Plaza Nav Utsav - Event Registration",
+  "description": "Official event registration for Felix Plaza Nav Utsav Dandiya Festival in Sector 82A, Gurugram.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
