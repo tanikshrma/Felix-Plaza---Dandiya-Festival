@@ -83,17 +83,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMap }) => {
           </div>
 
           {/* SECTOR 82 A, GURUGRAM */}
-          <div className="flex items-center gap-2.5 mt-0.5">
-            <span className="h-px w-6 sm:w-10 bg-[#F59E0B]/40" />
+          <div className="flex items-center justify-center mt-0.5">
             <button
               type="button"
               onClick={onOpenMap}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#163A63]/80 hover:bg-[#1E4578] active:scale-95 text-[#FFFDF7] text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase border border-[#F59E0B]/40 hover:border-[#F59E0B] transition-all cursor-pointer shadow-sm group"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#163A63]/85 hover:bg-[#1E4578] active:scale-95 text-[#FFFDF7] text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase border border-[#F59E0B]/50 hover:border-[#F59E0B] transition-all cursor-pointer shadow-sm group"
             >
               <MapPin className="w-3.5 h-3.5 text-[#F59E0B] shrink-0 group-hover:scale-110 transition-transform" />
               <span>SECTOR 82 A, GURUGRAM</span>
             </button>
-            <span className="h-px w-6 sm:w-10 bg-[#F59E0B]/40" />
           </div>
         </div>
       </div>
