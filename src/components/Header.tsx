@@ -71,11 +71,10 @@ export const Header: React.FC<HeaderProps> = () => {
         {/* Date, Timing & Venue Info Lockup (Clean static indicator pills - no links) */}
         <div className="mt-3.5 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
           {/* 17 OCT '26 • 6-10PM Badge */}
-          <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 rounded-full bg-gradient-to-r from-[#D97706] via-[#F59E0B] to-[#D97706] text-[#28050C] font-sans font-normal text-xs sm:text-sm tracking-normal uppercase shadow-[0_4px_16px_rgba(245,158,11,0.4)] border border-[#FEF3C7] select-none">
+          <div className="inline-flex items-center gap-2.5 px-4 sm:px-5 py-1.5 rounded-full bg-gradient-to-r from-[#D97706] via-[#F59E0B] to-[#D97706] text-[#28050C] font-sans font-normal text-xs sm:text-sm tracking-normal uppercase shadow-[0_4px_16px_rgba(245,158,11,0.4)] border border-[#FEF3C7] select-none">
             <Calendar className="w-3.5 h-3.5 text-[#28050C] shrink-0" />
             <span>17 OCT &apos;26</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#28050C]/60" />
-            <Clock className="w-3.5 h-3.5 text-[#28050C] shrink-0" />
+            <Clock className="w-3.5 h-3.5 text-[#28050C] shrink-0 ml-1" />
             <span>6-10PM</span>
           </div>
 
